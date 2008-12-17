@@ -1,0 +1,23 @@
+Usage:
+
+Add: 
+
+require 'ruby-debug'
+require 'cucumber_rails_debug/steps'
+
+To features/support/env.rb
+
+
+Then use:
+
+Then debug
+
+or
+
+Then html
+
+or 
+
+Then params
+
+
