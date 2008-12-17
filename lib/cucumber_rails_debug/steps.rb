@@ -4,7 +4,7 @@ Then /^debug$/ do
 end
 
 Then /^html$/ do
-  display { puts @response.body.gsub("\n", "\n \e    ")}
+  display { puts @response.body.gsub("\n", "\n            ")}
 end
 
  Then /^params$/ do
