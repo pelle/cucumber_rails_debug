@@ -1,6 +1,7 @@
 
 Then /^debug$/ do
   debugger
+  sit = 1
 end
 
 Then /^what$/ do
