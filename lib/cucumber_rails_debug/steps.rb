@@ -3,16 +3,32 @@ Then /^debug$/ do
   debugger
 end
 
-Then /^html$/ do
-  display { puts @response.body.gsub("\n", "\n            ")}
+Then /^what$/ do
+  display do
+    where
+    html
+    how
+    where
+  end
 end
 
- Then /^params$/ do
-  display{ puts @request.parameters.inspect }
- end
+def where
+  puts "#{@request.env["SERVER_NAME"]}#{@request.env["REQUEST_URI"]}" 
+end
 
-def display(decoration="\n#{'*' * 80}\n")
+def how
+  puts @request.parameters.inspect 
+end
+
+def html
+  puts @response.body.gsub("\n", "\n            ")
+end
+
+def display(decoration="\n#{'*' * 80}\n\n")
   puts decoration
   yield
   puts decoration 
 end
+
+
+
