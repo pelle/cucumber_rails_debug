@@ -1,16 +1,20 @@
 
-Then /^debug$/ do
+Then "debug" do
   debugger
-  sit = 1
+  stop_here = 1
 end
 
-Then /^what$/ do
+Then "what" do
   display do
     where
     html
     how
     where
   end
+end
+
+Then "pending" do
+  pending @__executor.instance_variable_get("@feature_file")
 end
 
 def where
