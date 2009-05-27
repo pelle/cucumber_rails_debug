@@ -1,3 +1,24 @@
+module CucumberRailsDebug
+  def where
+    puts "#{@request.env["SERVER_NAME"]}#{@request.env["REQUEST_URI"]}" 
+  end
+
+  def how
+    puts @request.parameters.inspect 
+  end
+
+  def html
+    puts @response.body.gsub("\n", "\n            ")
+  end
+
+  def display(decoration="\n#{'*' * 80}\n\n")
+    puts decoration
+    yield
+    puts decoration 
+  end
+end
+
+World(CucumberRailsDebug)
 
 Then "debug" do
   debugger
@@ -16,24 +37,4 @@ end
 Then "pending" do
   pending @__executor.instance_variable_get("@feature_file")
 end
-
-def where
-  puts "#{@request.env["SERVER_NAME"]}#{@request.env["REQUEST_URI"]}" 
-end
-
-def how
-  puts @request.parameters.inspect 
-end
-
-def html
-  puts @response.body.gsub("\n", "\n            ")
-end
-
-def display(decoration="\n#{'*' * 80}\n\n")
-  puts decoration
-  yield
-  puts decoration 
-end
-
-
 
